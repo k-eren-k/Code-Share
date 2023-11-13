@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        // Sağ tıklama engelleme
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // F12 tuşunu engelleme
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+    </script>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1,maximum-scale=1, user-scalable=0">
+    <title>DisCode: Explore, Collaborate, Elevate Your Code</title>
+    <meta name="description" content="DisCode is a dynamic platform where developers showcase their own projects and engage with fellow developers. It offers the opportunity to explore a variety of projects under different categories.">
+    <meta name="theme-style-mode" content="1">
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.hizliresim.com/j1njgjw.png">
+    <meta name="og:image" content="https://i.hizliresim.com/j1njgjw.png">
+    <meta name="og:title" content="DisCode: Explore, Collaborate, Elevate Your Code">
+    <meta name="og:description" content="DisCode is a dynamic platform where developers showcase their own projects and engage with fellow developers. It offers the opportunity to explore a variety of projects under different categories.">
+    <meta name="og:url" content="https://discode.fun">
+    <meta name="og:site_name" content="DisCode: Explore, Collaborate, Elevate Your Code">
+    <meta name="og:type" content="website">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@discode" />
+    <meta name="twitter:creator" content="@discode" />
+    <meta property="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DisCode: Explore, Collaborate, Elevate Your Code">
+    <meta name="twitter:description" content="DisCode is a dynamic platform where developers showcase their own projects and engage with fellow developers. It offers the opportunity to explore a variety of projects under different categories.">
+    <meta name="twitter:image" content="https://i.hizliresim.com/j1njgjw.png">
+    <link rel="stylesheet" href=" https://discord.com/api/guilds/1142151090440253510/widget.json">
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+/* CSS kodlarınızı buraya ekleyebilirsiniz */
+
+
+.code-item {
+  background-color: #2f333b;
+  margin-left: 19px;
+  margin-left: 4px;
+
+  padding: 20;
+  width: 258px;
+  display: inline-block;
+  margin-top: 18.1px;
+  border-radius: 8.7px;
+}
+
+
+/* Styling for the scrollbar */
+.yetkili::-webkit-scrollbar {
+width: 8px; /* Width of the scrollbar */
+margin-left: 12px; 
+height: 5px;
+margin-top: 25px;
+}
+
+/* Styling for the scrollbar thumb (the draggable part) */
+.yetkili::-webkit-scrollbar-thumb {
+background-color: #2f333b; /* Color of the thumb */
+border-radius: 4px; /* Rounded corners */    margin-left: 12px;     margin-top: 25px;
+
+
+}
+
+/* Styling for the scrollbar track (the background) */
+.yetkili::-webkit-scrollbar-track {
+background-color: #2f333b8f; /* Color of the track */
+border-radius: 4px; /* Rounded corners */    margin-left: 19px;margin-right: 23px;     margin-top: 25px;
+
+
+}
+.code-item h2 {
+  font-size: 19.7px;
+  font-weight: 300;
+height:42px;
+width: 207px;
+  border-radius: 3px;
+  display: flex;
+  margin-bottom: -2px;
+  text-align: center;
+  padding-left: 7px;
+  align-items: center;
+  background-image: linear-gradient(to right, #22222273, #22222253);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+.code-item p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #777;
+}
+
+.code-item .author-info {
+  display: flex;
+  height: 45px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #2323;
+  justify-content: space-between;
+}
+
+.code-item .author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 15%;
+  margin-top: 3px;
+  margin-right: 10px;
+  margin-left: 7px;
+}
+
+.code-item .author-username {
+  font-size: 14px;
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  margin-top: 12px;
+  font-weight: 300;
+  color: #555;
+}
+
+.view-code-button {
+  color: white;
+  padding: 5px 10px; 
+  border: none;
+  text-decoration: none;
+  color: white;
+  
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.code-info {
+  font-size: 14px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.brbrs {
+  height: 0.1px;
+  width: 100%;
+  background-color: #222;
+}
+
+.bgkttt {
+  height:42px;
+width: 214px;
+  display: block;
+  background-image: linear-gradient(to right, #22222273, #22222253);
+  margin-left: auto;
+  display: flex;
+  text-align: center;
+  
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-right: auto;
+  margin-top: 8.4px;
+  border-radius: 3px;
+}
+
+.bgktttt {
+height:42px;
+width: 214px;
+margin: 17.4px auto;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+cursor: pointer;
+color: white;
+background-image: linear-gradient(to right, #2f7cff, #6f3aff);
+border-radius: 3px;
+animation: colorShift 10s linear infinite;
+background-position: -100% center;
+}
+
+@keyframes colorShift {
+0% {
+background-position: -100% center;
+}
+100% {
+background-position: 100% center;
+}
+}
+
+.bgktttt:hover {
+background-image: linear-gradient(to left, #2f7cff, #6f3aff);
+animation: none;
+background-position: left center;
+}
+
+
+
+.div h1 {
+margin-bottom: 60px;
+}
+
+    </style>
+    <style>/* members.css */
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+            * {
+                font-family: 'Ubuntu', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+           body{
+            background-color: #1f2128;
+           }
+
+      
+      
+   
+          
+          ::-webkit-scrollbar{
+            display: none
+          }
+            
+            
+            /* Genel stil tanımlamaları */
+      
+    
+        </style>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+                *{
+                    font-family: 'Rubik', sans-serif;
+                }
+.infoindex{
+    height: 150px;
+    width: 50%;
+    display: block;
+    color: white;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    justify-content: center;
+    margin-left: 5px;
+    font-size: 16.8px;
+    border-radius: 5px;
+     border: 1px solid #2f333b9f ;
+    background-color: #2f333b;
+}
+
+.infoindexflexr{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 170px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.infoindextopbot {
+        width: 321.6px;
+        background-color: #2f333b;
+        margin-left: 5px;
+        margin: 4px;
+        height: 410px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column; /* Yatay düzenden dikey düzene geçiş */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .custom-box {
+        width: 270px;
+        padding: 15px;
+        background-color: #1e2125d0;
+        border-radius: 5px;
+        color: rgb(207, 207, 207);
+        font-weight: 300;
+        font-size: 15px;
+        overflow-y: scroll;
+        max-height: 150px;
+        margin-top: 10px; /* İçeriğin üstündeki boşluk */
+    }
+    
+    .custom-box::-webkit-scrollbar {
+        width: 3px;
+        display: none;
+        margin-right: 4px;
+    }
+    
+    .custom-box::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        margin-right: 4px;
+    }
+            </style>
+
+</head>
+    <%- include('include/header.ejs') %>
+    <div class="infoindexflexr">
+        <div class="infoindex"> <i style="margin-left: 15px; margin-right: 6px;" class="fa-solid fa-users"></i> <p id="TotalUsers"></p></div>
+        <div class="infoindex"><i style="margin-left: 15px; margin-right: 6px;" class="fa-solid fa-code-simple"></i>  <p id="TotalCodes"></p></div>
+    </div>
+    <div class="flxindexx" style="display: flex; margin-top: 10px; margin-left: auto
+    ; margin-right: auto;">
+        <div class="infoindextopbot" " >
+            <img style="width: 134px; height: 148px;margin-left: auto; margin-right: auto; margin-top: 4px; margin-bottom: 8px; object-fit: cover;" src="https://codeshare.me/assets/img/shape/connect-icon.png" alt="">
+            <h2 style="margin: 0; margin-bottom: 8px;         color: #121416;
+            " >Kod Paylaş</h2>
+            <div class="custom-box">
+                <p>
+                    Kodunuzu paylaşmak, başkalarına yardımcı olmanın ve geniş bir topluluğun parçası olmanın güzel bir yoludur. Başkalarının projelerinde yaşadıkları zorlukları ve hataları görerek, onlara çözümler sunabilir ve geliştirme süreçlerine destek olabilirsiniz. Bu, yardımseverliğin ve dayanışmanın bir örneğidir.
+                </p>
+            </div>
+        </div>
+        <div class="infoindextopbot" style="   margin-right:4px ;
+        ">
+            <img style="width: 134px; height: 148px;margin-left: auto; margin-right: auto; margin-top: 4px; margin-bottom: 8px; object-fit: cover;" src="https://codeshare.me/assets/img/shape/create-collection.png" alt="">
+            <h2 style="margin: 0; margin-bottom: 8px;         color: #121416;
+            " >Projeler Ve İletişim</h2>
+            <div class="custom-box">
+                <p>
+                    Kod paylaşım platformları, farklı geliştiricilerle etkileşim kurmanın harika bir yoludur. İnsanlarla iletişim kurarak yeni arkadaşlar edinebilir, mentorluk ilişkileri kurabilir ve hatta gelecekteki iş fırsatlarına ulaşabilirsiniz. Geliştirici topluluğunda tanınmak, kariyeriniz açısından oldukça değerli olabilir.
+                </p>
+            </div>
+        </div>
+        <div class="infoindextopbot">
+            <img style="width: 134px; height: 148px;margin-left: auto; margin-right: auto; margin-top: 4px; margin-bottom: 8px; object-fit: cover;" src="https://codeshare.me/assets/img/shape/list-icon.png" alt="">
+            <h2 style="margin: 0; margin-bottom: 8px;         color: #121416;
+            " >Topluluk Ve Öğrenme</h2>
+            <div class="custom-box">
+                <p>
+                    Teknoloji hızla ilerliyor ve yazılım geliştirme sürekli olarak değişen bir alandır. Başkalarının kodlarına bakarak, yeni teknolojilere ve yaklaşımlara nasıl adapte olabileceğinizi öğrenebilirsiniz.                </p>
+            </div>
+        </div>
+        <div class="infoindextopbot">
+            <img style="width: 134px; height: 148px;margin-left: auto; margin-right: auto; margin-top: 4px; margin-bottom: 8px; object-fit: cover;" src="https://i.hizliresim.com/qg2dfck.png" alt="">
+            <h2 style="margin: 0; margin-bottom: 8px;         color: #121416;
+            " >Kod Kalitesi ve Geribildirim</h2>
+            <div class="custom-box">
+                <p>
+                    Kendi kodunuzu paylaştığınızda, diğer geliştiricilerden geribildirim alabilirsiniz. Bu geribildirim, kodunuzun kalitesini artırmanıza yardımcı olabilir. Aynı şekilde, siz de başkalarının kodlarını inceleyerek değerli geribildirim sağlayabilir ve böylece birbirinizin yeteneklerini geliştirmenize katkıda bulunabilirsiniz.            </div>
+        </div>
+    </div>
+    <div class="div"  style="margin-top: 15px;">
+        <div class="yetkili" style="margin-top: -62px; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; padding-right: 19px;">
+            <% codes.forEach(code => { %>
+                <% if (code.authorUsername === "dym_e" || code.authorUsername === "cihbasc") { %>
+                    <div class="code-item" style="display: inline-block; vertical-align: top; margin-right: 5px;">
+                        <h2><i style="margin-right: 4px; color: white; margin-left: 3.5px; font-weight: 100; font-size: 22px;" class="fa-duotone fa-at"></i><p><%= code.authorUsername %></p></h2>
+                        <h2><p style="margin-left: 6px; color: white;"><i class="fa-duotone fa-file-signature"></i> <%= code.codeName %></p></h2>
+                        <div class="code-info">
+                            <div class="bgkttt">
+                                <span style="margin-right: auto; margin-left: 12px;"><i class="fa-duotone fa-keyboard" style="margin-right: 4px;"></i> Type: <%= code.codeType %></span>
+                            </div>
+                            <div class="bgkttt">
+                                <span style="margin-right: auto; margin-left: 12px;"><i class="fa-duotone fa-eye" style="margin-right: 4px;"></i> Views: <%= code.viewCount %></span>
+                            </div>
+                        </div>
+                        <div class="bgktttt">
+                            <a class="view-code-button" href="/u/<%= code.authorUsername %>/<%= code.codeName %>">View</a>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+    <script>
+        fetch('/getTotalUserCount')
+            .then(response => response.json())
+            .then(data => {
+                const totalUserCount = data.totalUserCount;
+                document.getElementById('TotalUsers').textContent = `Total User: ${totalUserCount}`;
+            })
+            .catch(error => {
+                console.error('Kullanıcı verisi alınamadı:', error);
+            });
+    
+        fetch('/getTotalCodeCount')
+            .then(response => response.json())
+            .then(data => {
+                const totalCodeCount = data.totalCodeCount;
+                document.getElementById('TotalCodes').textContent = `Total Code: ${totalCodeCount}`;
+            })
+            .catch(error => {
+                console.error('Kod verisi alınamadı:', error);
+            });
+    </script>
+</body>
+</html>

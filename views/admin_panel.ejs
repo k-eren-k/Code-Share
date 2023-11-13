@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Admin Panel</title>    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"/>
+    <script type="text/javascript">
+        // Sağ tıklama engelleme
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // F12 tuşunu engelleme
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <style>/* members.css */
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+        * {
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       
+    
+        .members-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .member-list {
+            list-style: none;
+            padding: 0;            border: 1px solid #eee;
+
+            border-radius: 10px;
+
+            margin: 0;
+        }
+        .codes-list {
+            list-style: none;
+            padding: 0;            border: 1px solid #eee;
+            border-radius: 10px;
+            margin-right: auto;
+            margin-left: auto;width: 95%;
+
+        }
+        
+        .member-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            position: relative;                     
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .code-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            margin-left: auto; 
+            align-items: center;
+            margin-right: auto;
+            align-items: center;
+            position: relative;                     
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .member-item:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .member-item:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom: none;
+        }
+        
+        .member-item:hover {
+            background-color: #f2f2f2;
+        }
+        .code-item:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .code-item:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom: none;
+        }
+        
+        .code-item:hover {
+            background-color: #f2f2f2;
+        }
+        
+        .member-avatar {
+            width: 40px;
+            border: 0.3px solid rgba(76, 75, 75, 0.21);
+            height: 40px;
+            border-radius: 15%;
+            margin-right: 10px;
+        }
+            
+        .code-avatar {
+            width: 40px;
+            border: 0.3px solid rgba(76, 75, 75, 0.21);
+            height: 40px;
+            border-radius: 15%;
+            margin-right: 10px;
+        }
+        .member-name {
+            font-size: 16px;
+            font-weight: 500;
+            margin-right: auto;
+        }
+        .code-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .member-status {
+            font-size: 14px;
+            color: #777;
+            margin-left: auto;
+            position: relative;
+        }
+        
+        .online-icon {
+            color: rgb(0, 255, 0);
+            padding: 9px 12px;
+            text-decoration: none;
+            margin-right: 5px;
+            font-weight:500 ;
+
+            border: 1px solid #eee; 
+            border-radius: 5px;
+        }
+        
+        .idle-icon {
+            color: yellow; padding: 9px 12px;
+            text-decoration: none;
+            margin-right: 5px;
+            font-weight:500 ;
+
+            border: 1px solid #eee; 
+            border-radius: 5px;
+        }
+        
+        .dnd-icon {
+            color: red; padding: 9px 12px;
+            text-decoration: none;
+            margin-right: 5px;
+            font-weight:500 ;
+
+            border: 1px solid #eee; 
+            border-radius: 5px;
+        }
+        .delete-code-button {
+            color: gray; padding: 9px 12px;
+            text-decoration: none;
+            margin-right: 5px;color: black;
+            font-weight:500 ;
+background-color: #ededed;
+            border: 1px solid #e6e6e6; 
+            border-radius: 5px;
+        }
+        .offline-icon {
+            color: gray; padding: 9px 12px;
+            text-decoration: none;
+            margin-right: 5px;
+            font-weight:500 ;
+
+            border: 1px solid #eee; 
+            border-radius: 5px;
+        }
+        
+        .status-popup {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1;
+        }
+        
+        .member-item:hover .status-popup {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .status-popup:before {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 6px 6px 0;
+            border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Member Status Icon Animations */
+        .member-status {
+            transition: color 0.3s;
+        }
+        
+        
+        
+        /* Genel stil tanımlamaları */
+  
+        
+        /* Navbar stil tanımlamaları */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin-right: 1.5rem;
+        }
+        .navbar ul li:last-child {
+            margin-right: 0;
+        }
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .navbar-link:hover {
+            color: #ffd700;
+        }
+        
+        /* Ana içerik stil tanımlamaları */
+        .main-content {
+            padding: 2rem;
+        }
+        .server-status {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .server-status h2 {
+            margin-top: 0;
+        }
+        .bankick-button{
+            padding: 9px 9px;
+            text-decoration: none;
+            color: black;
+            font-weight:500 ;
+
+            border: 1px solid #eee; 
+            border-radius: 5px;
+        }
+        /* Modal Stilleri */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 50%;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">Server Admin Panel</div>
+        <ul>
+            <li><a class="navbar-link" href="#">Dashboard</a></li>
+            <li><a class="navbar-link" href="#">Users</a></li>
+            <li><a class="navbar-link" href="#">Products</a></li>
+            <li><a class="navbar-link" href="#">Settings</a></li>
+            <!-- Diğer yan menü öğelerini buraya ekleyebilirsiniz -->
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div class="userservermanege">
+            <ul class="member-list">
+                <% members.forEach((member, index) => { %>
+                    <li class="member-item <% if (index === 0) { %> first-member <% } else if (index === members.length - 1) { %> last-member <% } %>">
+                        <img class="member-avatar" src="<%= member.user.avatarURL() %>" alt="<%= member.displayName %>">
+                        <span class="member-name"><%= member.displayName %></span>
+                        <span class="member-status <% 
+                            if (member.presence.status === 'online') { %> online-icon <% }
+                            else if (member.presence.status === 'idle') { %> idle-icon <% }
+                            else if (member.presence.status === 'dnd') { %> dnd-icon <% }
+                            else { %> offline-icon <% } %>">
+                            <% if (member.presence.status === 'online') { %> ●  <% }
+                            else if (member.presence.status === 'idle') { %> ●  <% }
+                            else if (member.presence.status === 'dnd') { %>  ● <% }
+                            else { %> ● <% } %>
+                        </span>
+                        <div class="status-popup">
+                            <% if (member.presence.status === 'online') { %> ONLİNE <% }
+                            else if (member.presence.status === 'idle') { %> İDLE <% }
+                            else if (member.presence.status === 'dnd') { %> DND <% }
+                            else { %> Çevrimdışı <% } %>
+                        </div>
+                        <div class="member-buttons">
+                            <a href="/u/ban/<%= member.displayName %>" class="bankick-button" data-user-id="<%= member.user.id %>"><i class="fa-duotone fa-ban"></i></a>
+                            <a href="/u/kick/<%= member.displayName %>" class="bankick-button" data-user-id="<%= member.user.id %>"><i class="fa-solid fa-sickle"></i></a>
+                         
+                            
+                            
+                            
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+
+
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+    
+   <div class="codes-list">
+
+    <ul>
+        <% codes.forEach(code => { %>
+            <li class="code-item">
+                <h3><img class="code-avatar" src="<%= code.authorAvatar %>" alt=""></h3>
+                <h3 class="code-name"><%= code.codeName %></h3>
+                <!-- Diğer kod detayları burada gösterilebilir -->
+                <form method="POST" style="margin-right: 0px; margin-left: auto;">
+                    <a href="/kod/<%= code.codeName %>/sil" class="delete-code-button"><i class="fa-duotone fa-trash"></i></a>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+    <script>
+        const banButtons = document.querySelectorAll('.ban-button');
+        const kickButtons = document.querySelectorAll('.kick-button');
+
+        banButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const userId = button.getAttribute('data-user-id');
+                // Burada ban işlemini gerçekleştirme kodunu ekleyebilirsiniz
+                // Örneğin: window.location.href = `/ban/${userId}`;
+            });
+        });
+
+        kickButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const userId = button.getAttribute('data-user-id');
+                // Burada kick işlemini gerçekleştirme kodunu ekleyebilirsiniz
+                // Örneğin: window.location.href = `/kick/${userId}`;
+            });
+        });
+    </script><script>
+    // Modal işlemleri
+    const modal = document.getElementById('myModal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeBtn = document.getElementsByClassName('close')[0];
+
+    // Modalı aç
+    modal.style.display = 'block';
+
+    // Kapatma düğmesine tıklandığında modalı kapat
+    closeBtn.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    // Modal dışına tıklandığında modalı kapat
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+</script>
+
+
+
+
+
+
+</body>
+</html>

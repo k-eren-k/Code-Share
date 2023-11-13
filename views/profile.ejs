@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta ve diğer head içeriği burada -->
+    <style>
+        /* Tarayıcıdan sağ tıklama ve F12 tuşunu engelleme kodları burada */
+        /* CSS stil tanımlamaları burada */
+    </style>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"/>
+
+    <!-- Gerekli CSS dosyaları burada eklenebilir -->
+</head>
+<body>    
+    <script>
+        const deleteCodeIcons = document.querySelectorAll('.delete-code-icon');
+        deleteCodeIcons.forEach(icon => {
+            icon.addEventListener('click', async event => {
+                const codeName = event.target.getAttribute('data-code-name');
+                const confirmation = confirm('Are you sure you want to delete this code?');
+                
+                if (confirmation) {
+                    try {
+                        const response = await fetch(`/delete-code/${codeName}`, {
+                            method: 'DELETE',
+                        });
+    
+                        if (response.ok) {
+                            // Reload the page after deletion
+                            window.location.reload();
+                        } else {
+                            console.error('Code deletion failed.');
+                        }
+                    } catch (error) {
+                        console.error('Error deleting code:', error);
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <div class="userdivpr">
+        <div class="prfdivtopbar">
+            <img class="wwwbanenr" src="<%= user.banner %>" alt="Banner">
+            <div class="userviflexre" style="display: flex;">
+                <div class="topdivuserinfo">
+                    <div class="avatartoperdiv">
+                      <img class="avatartopusr" src="<%= user.avatar %>" alt="Avatar">    
+                    </div>
+                    <div class="info-box">
+                        <p><i class="fa-solid fa-monument"></i> <%= user.username %></p>
+                        <p><i class="fa-regular fa-code-branch"></i> <%= kullaniciKodlari.length %> kod</p>
+                        <p><i class="fa-solid fa-comment"></i> 0 yorum</p>
+                        <p><i class="fa-solid fa-thumbs-up"></i> 0 beğeni</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user-codes">
+            <% if (kullaniciKodlari.length > 0) { %>
+                <ul class="ulak">
+                    <% kullaniciKodlari.forEach(code => { %>
+                        <li class="codelaruserejs">
+                            <a href="/u/<%= user.username %>/<%= code.codeName %>">
+                                <i class="fa-regular fa-code-branch"></i>
+                                <%= code.codeName %>
+                            </a>
+                            <a href="/delete-code/<%= user.username %>/<%= code.codeName %>">
+                                <i class="fa-solid fa-trash"></i>
+                                Delete
+                            </a>
+                                                    </li>
+                    <% }); %>
+                </ul>
+                
+            <% } else { %>
+                <p>Kullanıcıya ait kod bulunamadı.</p>
+            <% } %>
+        </div>
+    </div>
+    
+    <script>
+        // Gerekirse JavaScript kodlarını buraya ekleyebilirsiniz
+    </script>
+    <!-- Diğer kullanıcı bilgilerini burada gösterin -->
+</body>
+</html>

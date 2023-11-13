@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kod Ekleme Sayfası</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f2128;
+            border: none;
+            margin: 0;
+            display: flex;padding-top: 50px;
+            padding-bottom: 50px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #2f333b;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 90%;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        select {
+            appearance: none;
+            background: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/down4-512.png') no-repeat right 8px center;
+            background-size: 16px;
+            padding-right: 30px;
+            border-radius: 5px;
+            height: 45px;padding-left: 2%;font-family: Arial, sans-serif;
+            width: 100%;
+            transition: border-color 0.3s ease-in-out;
+        }
+        .select-up {
+            background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/up4-512.png');
+        }
+
+        select:focus {
+            border-color: #007bff;
+            background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/up4-512.png');
+        }
+        .select-arrow-reversed {
+            background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/up4-512.png');
+        }
+        button:hover {
+            background-color: #0056b3;
+        } body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 98%;
+            height: 45px;
+            padding-left: 2%;
+            background-color: #202328;
+            border-radius: 5px;
+            color: rgba(195, 194, 194, 0.856);
+            outline: none;
+            border: 1px solid #353535;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
+        textarea{
+height: 175px;      resize: none; padding-top: 8px; }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+        }
+        
+
+
+
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+    </style>
+    <style>
+        /* ... (diğer stiller) ... */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 11px;
+            width: 33%;
+            height: 25%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            position: relative;
+        }
+        .modal-content p {
+          height: 75px;width: 250px;background-color: #222222c0;border-radius: 5px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+       
+   
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure the modal is above other elements */
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure the modal is above other elements */
+}
+
+.modalalertadd {
+    background-color: #19191a;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    width: 330px;
+    height: auto;
+    position: relative;
+    color: white; /* Text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addmodalbtn {
+    display: inline-block;
+    padding: 13px 20px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+   
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #007bff;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.addmodalbtn:hover {
+    background-color: #0056b3;
+}
+
+.alertmessage {
+    margin-top: 20px;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.addmocalbtn{
+    padding: 18px 135px;
+    margin-right: auto;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    margin-left: auto;
+    border-radius: 8px;
+    background-color: #007bff;
+}
+
+.addmocalbtn:hover{
+    background-color: #0e62ba;
+}
+#alertmessagediv {
+    padding: 10px ;
+    border-radius: 8px;
+    background-color: #22222292;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:55px; /* Yüksekliği 100% olarak ayarlayarak dikey ortalamayı sağlar */
+    width: 311.2px;
+}
+
+#alertmessagediv p {
+    margin: 0; /* Ön tanımlı margin'ı sıfırla */
+}
+    </style>
+</head>
+<body style="background-color: #1f2128;">
+<div class="container" style="background-color: #2f333b;">
+    <form id="multiStepForm" action="/ekle" method="POST">
+        <div class="form-group">
+            <label for="codeName">Code Name</label>
+            <input type="text" id="codeName" name="codeName" >
+
+        </div>
+        
+
+        <!-- Other form groups here -->
+
+        <div class="form-group">
+            <label for="codeOwner">Code Sahip</label>
+            <input type="text" id="codeOwner" name="codeOwner" >
+
+        </div>
+
+        <div class="form-group">
+            <label for="codeDescription">Code Açıklaması</label>
+            <input type="text" id="shortDescription" name="shortDescription" >
+        </div>
+
+        <div class="form-group">
+            <label for="codeMain">Code Main</label>
+            <textarea style="background-color: #181a1ea4;" id="codeMain" name="codeMain" rows="10" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="cmd">Komutlar</label>
+            <textarea id="cmd" name="cmd" rows="5" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="modules">Modüller</label>
+            <input type="text" id="modules" name="modules" >
+        </div>
+
+        <div class="form-group">
+            <label for="licenseType">License Type</label>
+            <select id="licenseTypeSc" name="licenseTypeSc" >
+                <option value="" disabled selected>SELECT</option>
+                <option value="MIT">Lisans Yok</option>
+                <option value="MIT">MIT License</option>
+                <option value="GPL">GPL License</option>
+                <!-- Add more options if needed -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="codeType">Code Type</label>
+            <select id="codeTypeSc" name="codeTypeSc" >
+                <option value="" disabled selected>SELECT</option>
+
+                <option value="html">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="javascript">JAVASCİPT</option>
+                <option value="javascript">JAVASCİPT</option>
+
+                <option value="AOİ">AOİ</option>
+
+                <option value="javascript">DSJS V11</option>
+                <option value="javascript">DSJS V12</option>
+                <option value="javascript">DSJS V13</option>
+                <option value="javascript">DSJS V14</option>
+                <option value="javascript">BDFD</option>
+                <option value="php">PHP</option>
+                <option value="c++">C++</option>
+
+
+
+                <!-- Add more options if needed -->
+            </select>
+        </div>
+        <script type="text/javascript">
+            // Sağ tıklama engelleme
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+    
+            // F12 tuşunu engelleme
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                }
+            });
+        </script>
+        <button style="height: 52px;" type="submit">Ekle</button>
+    </form>
+    <div class="overlay" id="overlay">
+        <div class="modalalertadd">
+            <div id="alertmessagediv">
+                <p class="alertmessage"></p>
+            </div>
+            <a style="width: 287px; height: 37px; margin-top: -5px; display: flex; justify-content: center; text-align: center; align-items: center;" class="addmodalbtn" id="closeModal">Tamam</a>
+        </div>
+
+
+</body>
+<script>
+    const selectElements = document.querySelectorAll('select');
+    selectElements.forEach(select => {
+        select.addEventListener('click', function () {
+            this.classList.toggle('select-up');
+        });
+        select.addEventListener('blur', function () {
+            this.classList.remove('select-up');
+        });
+    });
+</script>
+
+<script>
+    const form = document.getElementById('multiStepForm');
+    const overlay = document.getElementById('overlay');
+    const closeModal = document.getElementById('closeModal');
+
+    form.addEventListener('submit', function (event) {
+        const inputs = form.querySelectorAll('input, textarea, select');
+        let isEmpty = false;
+
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                isEmpty = true;
+                input.style.border = '1px solid red';
+            }
+        });
+
+        if (isEmpty) {
+            event.preventDefault();
+            showModal('Lütfen tüm alanları doldurun!');
+        }
+    });
+
+    closeModal.addEventListener('click', function () {
+        closeModalFunction();
+    });
+
+    function showModal(message) {
+        const alertMessage = document.querySelector('.alertmessage');
+        alertMessage.innerText = message;
+        overlay.style.display = 'flex';
+    }
+
+    function closeModalFunction() {
+        overlay.style.display = 'none';
+    }
+</script>
+</html>

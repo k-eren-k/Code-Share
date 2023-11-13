@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://i.hizliresim.com/j1njgjw.png" type="image/png" sizes="16x16">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Örneği</title>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"/>
+    <script type="text/javascript">
+        // Sağ tıklama engelleme
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // F12 tuşunu engelleme
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <style>
+        /* Temel stil örnekleri */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #272b33;
+            overflow: hidden;
+            display: flex;
+            height: 10vh;
+            align-items: center;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: rgb(206, 206, 206);
+            text-align: center;
+            border-radius: 3px;
+            padding: 14px 16px;
+            width: 118px;
+            text-decoration: none;
+            margin-right: 3px;
+        }
+
+        .navbtn:hover {
+            background-color: #15171ba2;
+            color: white;
+            width: 118px;
+        }
+     
+
+        .logodiv {
+            height: 47px;
+            width: 47px;
+            border-radius: 5px;
+            background-color: #2222229c;
+            display: flex;
+            margin-left: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            height: 35px;
+            width: 35px;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .prdiv {
+            height: 47px;
+            width: 47px;
+            border-radius: 5px;
+            background-color: #2222229c;
+            display: flex;
+            margin-left: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar {
+            height: 35px;
+            width: 35px;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .prd {
+            height: 47px;
+            width: 47px;
+            border-radius: 5px;
+            background-color: #2222229c;
+            display: flex;
+            margin-left: 25px;
+            justify-content: center;
+            margin-right: 25px;
+            align-items: center;
+        }
+/* Modal arka plan stil */
+.modal {
+    display: none; /* Başlangıçta gizli */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Yarı saydam arka plan */
+    z-index: 1000; /* Diğer öğelerden üstte görünmesini sağlar */
+  
+    align-items: center; /* Dikey ortalama */
+    justify-content: center; /* Yatay ortalama */
+}
+
+/* Modal içeriği stil */
+.modal-content {
+    background-color: #2f333b;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 400px; 
+margin-left: auto;
+margin-right: auto;
+    padding: 20px;
+    height: auto;
+}
+
+/* Modal içeriği başlık */
+.modal-content h2 {
+    margin-top: 0;
+}
+
+/* Modal kapatma düğmesi */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.topuserheader{
+    height: 79px;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    color: rgb(224, 224, 224);
+    align-items: center;
+    background-color: #272b33;
+}
+.topheaderbtndiv {
+    height: 68px;
+    margin-top: 7px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex; /* Öğeleri yatay olarak hizala */
+    background-color: #272b33;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+}
+.atopherad{
+    width: 167px;
+    height: auto;
+
+}
+.topheaderbtndiv:hover{
+    height: 68px;
+    margin-top: 7px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex; /* Öğeleri yatay olarak hizala */
+    background-color: #30353eaf;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+}
+.avatarr{
+    height: 55px;
+    width: 55px;
+    border-radius: 5px;
+    margin-left: 12px;
+    margin-right: 6px;
+    display: block;
+}
+   
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logodiv">
+        <img class="logo" src="https://images-ext-2.discordapp.net/external/dB70J55f1zzJZtywLxN3b6oPWbQR6DHZwyYlDXU6YsM/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1142151090440253510/18aecf3fb3cd5450ff7d698f4ddf2fc6.webp?width=423&height=423" alt="">
+    </div>
+    <a class="navbtn" style="margin-left: auto;" href="/"><i style="margin-right: 0.7px; margin-bottom: 0.7px;" class="fa-solid fa-house"></i> Home</a>
+    <a class="navbtn" href="/kesfet"><i style="margin-right: 0.7px; margin-bottom: 0.7px;" class="fa-solid fa-compass"></i> Discover</a>
+    <a class="navbtn" style="margin-right: auto;" href="/team"><i style="margin-right: 0.7px; margin-bottom: 0.7px;" class="fa-regular fa-code-fork"></i> Team</a>
+    <div class="dropdown" >
+        <% if (user) { %>
+            <div style="margin-right: 25px;" class="prdiv">
+                <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.webp?size=80" class="avatar" alt="<%= user.username %> Avatar">
+            </div>
+            <div class="modal"  id="modal">
+                <div class="modal-content">
+                    <% if (user) { %>
+                       <div class="topuserheader">  
+                        <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.webp?size=80" class="avatarr" alt="<%= user.username %> Avatar">
+                        <p class="topheaderusername"><%= user.username %></p>
+                    </div>
+                    <div class="topheaderbtndiv">
+                        <a class="atopherad" href="/u/<%= user.username %>">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="topheaderbtndiv" style="margin-left: auto; margin-right: auto;">
+                        <a class="atopherad" href="/add">
+                            <i class="fa-solid fa-code-simple"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="topheaderbtndiv">
+                        <a class="atopherad" href="/logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </div>
+                    
+                    <% } %>
+                </div>
+            </div>
+        <% } else { %>
+            <div class="prd">
+                <a style="margin-right: auto; margin-left: auto; margin-top: 1.3px; margin-right: 2.5px;" href="/giris"><i class="fa-solid fa-right-to-bracket"></i></a>
+            </div>
+        <% } %>
+    </div>
+</div>
+<script>
+    const modal = document.getElementById('modal');
+    const avatar = document.querySelector('.avatar');
+    
+    avatar.addEventListener('click', () => {
+        modal.style.display = 'flex';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+</body>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.hizliresim.com/j1njgjw.png" type="image/png" sizes="16x16">
+    <script type="text/javascript">
+        // Sağ tıklama engelleme
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // F12 tuşunu engelleme
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <title><%= user.username %> Profili</title>    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: #1f2128;
+        }
+
+        .userdivpr {
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+            height: 750px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .prfdivtopbar {
+            position: relative;
+            overflow: hidden;
+        }
+
+     
+
+        .prfdivtopbar img:last-child {
+            max-width: 80px; /* Avatarı küçültmek için özelleştirilmiş bir genişlik değeri */
+            margin-top: -50px; /* Avatarı üstte hizalamak için ayar */
+            border-radius: 50%; /* Avatarı yuvarlak yapmak için kenar yuvarlaklık */
+            border: 5px solid white; /* Beyaz bir sınır ekleyerek daha belirgin hale getirme */
+        }
+
+        .prfdivtopbar h1 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .br {
+            height: 20px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            color: #007bff;
+        }
+        .topdivuserinfo {
+    height: 439.9px;
+    border-bottom-left-radius: 7px;
+    background-color: #2f333b;
+    width: 256px;
+    display: flex;
+    flex-direction: column; /* Alt alta sırala */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
+}
+
+
+        .avatartoperdiv{
+            height: 140px;
+           display: grid;
+           
+           place-items: center;
+            width: 140px;
+            background-color:#262930 ;
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            top:90px;
+            border-radius: 5px;
+            object-fit: cover;
+}
+
+        .avatartopusr{
+          margin-bottom: -40px;
+        
+      border: none;
+        
+        }
+        .codelaruserejs{
+            height: 55px;
+            width: 517px;
+            margin-left: 25px;
+            margin-right: 25px;
+            border-radius: 5px;
+            background-color: #262930  ;
+            display: flex;
+            cursor: pointer;    
+        justify-content: left;
+        align-items: center;
+        } .codelaruserejs:hover{
+           background-color:#353943   ;
+        }
+        .wwwbanenr{
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            height: 310px;
+            display: block;
+            margin: 0px;
+            width: 100%;
+        }
+        .ulak::-webkit-scrollbar{
+            display: none;
+        } 
+    </style>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"/>
+
+</head>
+<body>    
+
+    <div class="userdivpr " style="            border-radius: 12px;
+    ">
+        <div class="prfdivtopbar" >
+         
+            <img style=""   class="wwwbanenr" src="<%= user.banner %>" alt="Banner">
+            <div class="userviflexre" style="display: flex;">
+                <div class="topdivuserinfo" style="width: 320px;">
+                    <div class="avatartoperdiv">
+                      <img class="avatartopusr" src="<%= user.avatar %>" alt="Avatar">    
+                    </div>      
+<div style="margin-top: -161px; height: 55px;   display: flex;   justify-content: left;
+align-items: center;      width: 140px; background-color: #262930;
+border-radius: 5px ; color: #e0ecec;">
+<p style="margin-left: 12px;"><i style="margin-right: 8px;" class="fa-solid fa-monument"></i> <%= user.username %></h1>
+</div>
+
+<div style="margin-top: 8px; height: 55px;   display: flex;   justify-content: left;
+align-items: center;      width: 140px; background-color: #262930;
+border-radius: 5px ; color: #e0ecec;">
+<p style="margin-left: 12px;"><i style="margin-right: 8px;" class="fa-regular fa-code-branch"></i><%= kullaniciKodlari.length %></h1>
+</div>
+<div style="margin-top:8px; height: 55px;   display: flex;   justify-content: left;
+align-items: center;      width: 140px; background-color: #262930;
+border-radius: 5px ; color: #e0ecec;">
+<p style="margin-left: 12px;"><i style="margin-right: 8px;"  class="fa-solid fa-comment"></i>0</h1>
+</div>
+<div style="margin-top:8px; height: 55px;   display: flex;   justify-content: left;
+align-items: center;      width: 140px; background-color: #262930;
+border-radius: 5px ; color: #e0ecec;">
+<p style="margin-left: 12px;"><i style="margin-right: 8px;"  class="fa-solid fa-thumbs-up"></i>0</h1>
+</div>
+
+                  </div>
+                       
+                  <div style="width: 1.2px;  background-color: #535b69;" class="brsfr">
+
+                  </div>
+      <div style="background-color: #2f333b; width: 100%; border-bottom-right-radius: 7px; ">
+        <% if (kullaniciKodlari.length > 0) { %>
+        <ul class="ulak" style="max-height: 408px;     overflow: auto;">
+            <% kullaniciKodlari.forEach(code => { %>
+                    <li class="codelaruserejs">
+                    <a style="margin-left: 15px; color: rgb(236, 236, 236);" href="/u/<%= user.username %>/<%= code.codeName %>">
+                        <i style="margin-right: 4.3px; margin-left: 4.3px;" class="fa-regular fa-code-branch"></i>
+                        <%= code.codeName %>
+                    </a>
+                </li>
+                <% }); %>
+                
+        </ul>
+        <% } else { %>
+            <p style="color: rgb(236, 236, 236); text-align: center; padding: 20px;">
+                Kullanıcıya ait kod bulunamadı.
+            </p>
+            <% } %>
+    </div>
+    
+           
+            
+            </div>
+           
+       
+        
+    </div>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const loggedIn = true; // Kullanıcının oturum açmış olup olmadığını kontrol edin
+            const deleteIcons = document.querySelectorAll('.delete-icon');
+
+            deleteIcons.forEach(icon => {
+                icon.style.display = loggedIn ? 'inline' : 'none';
+
+                icon.addEventListener('click', async function() {
+                    const codeId = icon.getAttribute('data-code-id');
+                    
+                    try {
+                        // Kod silme işlemi burada gerçekleştirilebilir
+                        const response = await fetch(`/delete-code/${codeId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Kod başarıyla silindiğinde yapılacak işlemler
+                            icon.parentElement.remove(); // Listeden silinen kodu kaldır
+                        }
+                    } catch (error) {
+                        console.error('Kod silme hatası:', error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        const deleteIcons = document.querySelectorAll('.delete-icon');
+        
+        deleteIcons.forEach(icon => {
+            icon.addEventListener('click', async function() {
+                const codeId = icon.getAttribute('data-code-id');
+                
+                try {
+                    // Kod silme işlemi burada gerçekleştirilebilir
+                    const response = await fetch(`/delete-code/${codeId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Kod başarıyla silindiğinde yapılacak işlemler
+                        icon.parentElement.remove(); // Listeden silinen kodu kaldır
+                    }
+                } catch (error) {
+                    console.error('Kod silme hatası:', error);
+                }
+            });
+        });
+    </script>
+    <!-- Diğer kullanıcı bilgilerini burada gösterin -->
+</body>
+
+</html>
